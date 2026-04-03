@@ -1,4 +1,3 @@
-
 # Python virtual environment
 .venv/
 
@@ -14,3 +13,5 @@ uv.lock
 # pyproject.toml (local overrides)
 pyproject.toml
 
+# Qwen Code
+.qwen/
