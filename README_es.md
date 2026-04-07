@@ -57,31 +57,15 @@
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-#### Paso 2. Crear Entorno Virtual
+#### Paso 2. Sincronizar Entorno (Instalar Todas las Dependencias)
 
 ```bash
-uv venv --python 3.10
-source .venv/bin/activate
+uv sync
 ```
 
-#### Paso 3. Instalar motorbridge
-
-**Opción 1: Instalación en Línea (Recomendado)**
-```bash
-uv pip install motorbridge
-```
-
-**Opción 2: Instalación Local desde Wheel**
-```bash
-cd /path/to/reBotArm_control_py
-uv pip install motorbridge-0.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-```
-
-#### Paso 4. Instalar Otras Dependencias
-
-```bash
-uv pip install pinocchio numpy pyyaml
-```
+:::tip
+`uv sync` creará automáticamente un entorno virtual (si no existe) e instalará todas las dependencias según `pyproject.toml` y `uv.lock`.
+:::
 
 ---
 

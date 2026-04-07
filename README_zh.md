@@ -47,31 +47,15 @@
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-#### 步骤 2. 创建虚拟环境
+#### 步骤 2. 同步环境（安装所有依赖）
 
 ```bash
-uv venv --python 3.10
-source .venv/bin/activate
+uv sync
 ```
 
-#### 步骤 3. 安装 motorbridge
-
-**方式 1：在线安装（推荐）**
-```bash
-uv pip install motorbridge
-```
-
-**方式 2：本地 wheel 安装**
-```bash
-cd /path/to/reBotArm_control_py
-uv pip install motorbridge-0.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-```
-
-#### 步骤 4. 安装其他依赖
-
-```bash
-uv pip install pinocchio numpy pyyaml
-```
+:::tip
+`uv sync` 会自动创建虚拟环境（如不存在）并根据 `pyproject.toml` 和 `uv.lock` 安装所有依赖。
+:::
 
 ---
 

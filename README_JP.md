@@ -57,31 +57,15 @@
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-#### ステップ 2. 仮想環境の作成
+#### ステップ 2. 環境の同期（すべての依存関係をインストール）
 
 ```bash
-uv venv --python 3.10
-source .venv/bin/activate
+uv sync
 ```
 
-#### ステップ 3. motorbridge のインストール
-
-**オプション 1: オンラインインストール（推奨）**
-```bash
-uv pip install motorbridge
-```
-
-**オプション 2: ローカルホイールインストール**
-```bash
-cd /path/to/reBotArm_control_py
-uv pip install motorbridge-0.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-```
-
-#### ステップ 4. その他の依存関係のインストール
-
-```bash
-uv pip install pinocchio numpy pyyaml
-```
+:::tip
+`uv sync` は、仮想環境を自動的に作成し（存在しない場合）、`pyproject.toml` と `uv.lock` に従ってすべての依存関係をインストールします。
+:::
 
 ---
 
