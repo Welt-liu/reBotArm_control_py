@@ -8,7 +8,7 @@
 控制律（MIT 位置闭环 + 重力前馈）：
     tau = g(q)          — 重力前馈
     pos = 当前电机位置   — 关节位置目标跟随当前位置
-    kp   = 2,  kd = 1   — 所有电机统一刚度/阻尼
+    kp   = 0,  kd = 1.0   — 所有电机统一刚度/阻尼
 
 终端持续打印每个关节的期望力矩（N·m）。
 """
@@ -60,11 +60,11 @@ def gravity_compensation_controller(arm: RobotArm, dt: float) -> None:
     # 2. Pinocchio 计算广义重力向量
     tau_g = compute_generalized_gravity(q=q)   # shape=(6,), 单位: N·m
 
-    # 3. MIT 前馈: 位置目标跟随当前电机位置，kp=2, kd=1，重力补偿
+    # 3. MIT 前馈: 位置目标跟随当前电机位置，kp=0, kd=1，重力补偿
     arm.mit(
         pos=q,
         vel=np.zeros(arm.num_joints),
-        kp=np.full(arm.num_joints, 2.0),
+        kp=np.full(arm.num_joints, 0.0),
         kd=np.full(arm.num_joints, 1.0),
         tau=tau_g,
         request_feedback=True,

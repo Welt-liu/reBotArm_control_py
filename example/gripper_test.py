@@ -34,7 +34,7 @@ class GripperTerminal:
         self.g.start_control_loop(self._loop, rate=100.0)
         print(f"控制循环已启动 {self.g._rate} Hz")
 
-    def _loop(self, dt: float):
+    def _loop(self, gripper, dt: float):
         if self.g.mode == "mit":
             self.g.mit(pos=self._target_pos, vel=self._target_vel, tau=self._mit_tau)
         elif self.g.mode == "pos_vel":
